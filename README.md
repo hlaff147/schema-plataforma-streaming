@@ -22,19 +22,19 @@ Todo o esquema foi desenvolvido utilizando SQL padrão, com ajustes para compati
 
 ## 📂 Estrutura e Como Usar
 
-Os scripts foram nomeados em inglês seguindo convenções de desenvolvimento e devem ser executados na seguinte ordem:
+Os scripts no repositório devem ser executados na seguinte ordem para configurar e testar o ambiente corretamente:
 
-1.  **`schema.sql`**
+1.  **`create_tables.sql`**
     * **O que faz?** Cria toda a estrutura de tabelas, chaves primárias, estrangeiras e outras restrições.
     * **Como usar?** Execute este script **primeiro** em um banco de dados Oracle limpo.
 
-2.  **`seed.sql`**
+2.  **`populate.sql`**
     * **O que faz?** Popula as tabelas criadas com dados de amostra (usuários, canais, vídeos, etc.).
-    * **Como usar?** Execute este script **após** a execução bem-sucedida do `schema.sql`.
+    * **Como usar?** Execute este script **após** a execução bem-sucedida do `create_tables.sql`.
 
-3.  **`teardown.sql`**
-    * **O que faz?** Remove **todas** as tabelas criadas pelo `schema.sql`, limpando completamente o ambiente.
+3.  **`drop_tables.sql`**
+    * **O que faz?** Remove **todas** as tabelas criadas, limpando completamente o ambiente.
     * **Como usar?** Use este script quando precisar resetar o banco de dados. Cuidado, esta ação é irreversível.
 
-4.  **`SCHEMA.md`**
-    * **O que é?** Arquivo de documentação que descreve o esquema relacional normalizado, detalhando cada tabela, seus atributos e os relacionamentos.
+4.  **`database_design.md`**
+    * **O que é?** Arquivo de documentação que descreve o esquema relacional normalizado, detalhando cada tabela, seus atributos e os relacionamentos. Consulte este arquivo para entender a lógica do modelo de dados.
