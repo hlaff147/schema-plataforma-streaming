@@ -10,18 +10,18 @@ ALTER TABLE Usuario ADD data_nascimento DATE;
 CREATE INDEX idx_canal_nome ON Canal(nome_canal);
 
 -- 3. INSERT INTO: Inserindo dados de CEP, um novo usuário e um novo canal para os testes seguintes.
-INSERT INTO CEP_INFO (cep, rua, bairro, cidade, estado) VALUES ('50740530', 'Rua Acadêmico Hélio Ramos', 'Várzea', 'Recife', 'PE');
-INSERT INTO Usuario (cpf, email, nome, descricao, cep, numero_endereco, data_nascimento) VALUES ('12121212121', 'novo.usuario@email.com', 'Usuario Teste', 'Um novo usuário para testes.', '50740530', '999', TO_DATE('2000-10-15', 'YYYY-MM-DD'));
-INSERT INTO Canal (nome_canal, data_criacao_canal, descricao_canal) VALUES ('Canal Teste Delete', SYSDATE, 'Canal para ser deletado');
+INSERT INTO CEP_INFO (cep, rua, bairro, cidade, estado) VALUES ('50070000', 'Avenida das Oportunidades', 'Bairro Novo', 'Recife', 'PE');
+INSERT INTO Usuario (cpf, email, nome, descricao, cep, numero_endereco, data_nascimento) VALUES ('98989898989', 'outro.usuario@email.com', 'Outro Usuario Teste', 'Um usuário diferente para testes.', '50070000', '101', TO_DATE('1999-11-20', 'YYYY-MM-DD'));
+INSERT INTO Canal (nome_canal, data_criacao_canal, descricao_canal) VALUES ('Canal para Apagar', SYSDATE, 'Canal a ser deletado');
 
 -- 4. UPDATE: O novo usuário decidiu mudar sua descrição.
 UPDATE Usuario
-SET descricao = 'Descrição atualizada após o cadastro.'
-WHERE cpf = '12121212121';
+SET descricao = 'Descrição recém-atualizada.'
+WHERE cpf = '98989898989'; -- Ajustado para o novo CPF
 
 -- 5. DELETE: Deletando o canal de teste que foi criado.
 DELETE FROM Canal
-WHERE nome_canal = 'Canal Teste Delete';
+WHERE nome_canal = 'Canal para Apagar'; 
 
 -- Consulta principal para demonstrar múltiplos itens da checklist
 -- Cenário: Gerar um relatório com os streamers mais populares, mostrando o nome do usuário, nome do canal,
