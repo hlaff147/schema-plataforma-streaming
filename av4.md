@@ -1,31 +1,3 @@
-Com certeza\! Entendido. Vamos por partes.
-
-### 1\. Como Manter o `INSERT` e Ignorar o Erro
-
-Para manter o `INSERT` e evitar que o script pare com o erro `ORA-00001` ao ser executado mais de uma vez, a solução mais limpa é envolvê-lo em um pequeno bloco PL/SQL que "captura" a exceção de valor duplicado e a ignora.
-
-Substitua a linha `INSERT INTO CEP_INFO...` por este bloco:
-
-```sql
-BEGIN
-  INSERT INTO CEP_INFO (cep, rua, bairro, cidade, estado) VALUES ('50740530', 'Rua Acadêmico Hélio Ramos', 'Várzea', 'Recife', 'PE');
-EXCEPTION
-  WHEN DUP_VAL_ON_INDEX THEN
-    NULL; -- Ignora o erro se o CEP já existir e continua a execução
-END;
-/
-```
-
-Isso mantém a simplicidade do `INSERT` e torna seu script re-executável.
-
-### 2\. Ajuste do Arquivo `AV4.md`
-
-Abaixo está a versão do arquivo `AV4.md` completamente ajustada para refletir exatamente o conteúdo e os cenários do seu arquivo `AV4.sql`. As seções de `INSERT`/`DELETE` e a de PL/SQL foram sincronizadas.
-
------
-
-## Arquivo `AV4.md` Ajustado
-
 ## 1\. Consultas SQL
 
 Aqui estão as consultas que cobrem os 26 itens da checklist de SQL.
@@ -36,27 +8,27 @@ Aqui estão as consultas que cobrem os 26 itens da checklist de SQL.
 
 ```sql
 -- Adicionando uma coluna para armazenar a data de nascimento do usuário.
--- CHECKLIST: ALTER TABLE
+[cite_start]-- CHECKLIST: ALTER TABLE [cite: 6]
 ALTER TABLE Usuario ADD data_nascimento DATE;
 
 -- Criando um índice no nome do canal para otimizar buscas por nome.
--- CHECKLIST: CREATE INDEX
+[cite_start]-- CHECKLIST: CREATE INDEX [cite: 6]
 CREATE INDEX idx_canal_nome ON Canal(nome_canal);
 
 -- Inserindo dados de CEP, um novo usuário e um novo canal para os testes seguintes.
--- CHECKLIST: INSERT INTO
+[cite_start]-- CHECKLIST: INSERT INTO [cite: 6]
 INSERT INTO CEP_INFO (cep, rua, bairro, cidade, estado) VALUES ('50740530', 'Rua Acadêmico Hélio Ramos', 'Várzea', 'Recife', 'PE');
 INSERT INTO Usuario (cpf, email, nome, descricao, cep, numero_endereco, data_nascimento) VALUES ('12121212121', 'novo.usuario@email.com', 'Usuario Teste', 'Um novo usuário para testes.', '50740530', '999', TO_DATE('2000-10-15', 'YYYY-MM-DD'));
 INSERT INTO Canal (nome_canal, data_criacao_canal, descricao_canal) VALUES ('Canal Teste Delete', SYSDATE, 'Canal para ser deletado');
 
 -- O novo usuário decidiu mudar sua descrição.
--- CHECKLIST: UPDATE
+[cite_start]-- CHECKLIST: UPDATE [cite: 6]
 UPDATE Usuario
 SET descricao = 'Descrição atualizada após o cadastro.'
 WHERE cpf = '12121212121';
 
 -- Deletando o canal de teste que foi criado para a demonstração.
--- CHECKLIST: DELETE
+[cite_start]-- CHECKLIST: DELETE [cite: 6]
 DELETE FROM Canal
 WHERE nome_canal = 'Canal Teste Delete';
 ```
@@ -66,7 +38,7 @@ WHERE nome_canal = 'Canal Teste Delete';
 #### Cenário: Gerar um relatório com os streamers mais populares, mostrando o nome do usuário, nome do canal, a quantidade total de transmissões, a média e o pico de espectadores que já tiveram, considerando apenas streamers com mais de uma transmissão e que tiveram um pico de mais de 80 espectadores. O relatório deve ser ordenado do maior pico para o menor.
 
 ```sql
--- CHECKLIST: SELECT-FROM-WHERE, INNER JOIN, MAX, MIN, AVG, COUNT, GROUP BY, HAVING, ORDER BY
+[cite_start]-- CHECKLIST: SELECT-FROM-WHERE [cite: 6][cite_start], INNER JOIN [cite: 6][cite_start], MAX [cite: 6][cite_start], MIN [cite: 6][cite_start], AVG [cite: 6][cite_start], COUNT [cite: 6][cite_start], GROUP BY [cite: 6][cite_start], HAVING [cite: 6][cite_start], ORDER BY [cite: 6]
 SELECT
     U.nome AS nome_streamer,
     C.nome_canal,
@@ -97,7 +69,7 @@ ORDER BY
 #### Cenário: Listar todos os usuários, e para aqueles que são streamers, mostrar o nome do canal. Usuários que não são streamers também devem aparecer na lista.
 
 ```sql
--- CHECKLIST: LEFT ou RIGHT ou FULL OUTER JOIN
+[cite_start]-- CHECKLIST: LEFT ou RIGHT ou FULL OUTER JOIN [cite: 6]
 SELECT
     U.nome,
     U.email,
@@ -115,7 +87,7 @@ ORDER BY
 #### Cenário: Encontrar transmissões que aconteceram em Junho de 2025, de canais com "Jogo" no nome, e cujo status não seja nulo, limitado a canais específicos (ID 1 ou 2).
 
 ```sql
--- CHECKLIST: BETWEEN, IN, LIKE, IS NULL ou IS NOT NULL
+[cite_start]-- CHECKLIST: BETWEEN [cite: 6][cite_start], IN [cite: 6][cite_start], LIKE [cite: 6][cite_start], IS NULL ou IS NOT NULL [cite: 6]
 SELECT
     C.nome_canal,
     T.titulo,
@@ -136,7 +108,7 @@ WHERE
 #### Cenário: Encontrar os vídeos do canal mais antigo da plataforma.
 
 ```sql
--- CHECKLIST: SUBCONSULTA COM OPERADOR RELACIONAL (=)
+[cite_start]-- CHECKLIST: SUBCONSULTA COM OPERADOR RELACIONAL (=) [cite: 6]
 SELECT
     titulo,
     duracao_data_upload
@@ -149,7 +121,7 @@ WHERE
 #### Cenário: Encontrar os nomes de todos os usuários que já assistiram a algum vídeo de um canal da categoria 'Música'.
 
 ```sql
--- CHECKLIST: SUBCONSULTA COM IN
+[cite_start]-- CHECKLIST: SUBCONSULTA COM IN [cite: 6]
 SELECT nome FROM Usuario
 WHERE cpf IN (
     SELECT DISTINCT A.usuario_cpf
@@ -167,7 +139,7 @@ WHERE cpf IN (
 #### Cenário: Encontrar canais que possuem pelo menos uma transmissão com mais espectadores que a média de QUALQUER outro canal.
 
 ```sql
--- CHECKLIST: SUBCONSULTA COM ANY
+[cite_start]-- CHECKLIST: SUBCONSULTA COM ANY [cite: 6]
 SELECT nome_canal FROM Canal C
 WHERE C.id_canal IN (
     SELECT T.canal_id FROM Transmissao T
@@ -183,7 +155,7 @@ WHERE C.id_canal IN (
 #### Cenário: Encontrar o(s) streamer(s) cujo pico de espectadores é maior ou igual ao de TODAS as transmissões.
 
 ```sql
--- CHECKLIST: SUBCONSULTA COM ALL
+[cite_start]-- CHECKLIST: SUBCONSULTA COM ALL [cite: 6]
 SELECT U.nome
 FROM Usuario U
 JOIN Streamer S ON U.cpf = S.cpf_streamer
@@ -203,7 +175,7 @@ WHERE S.id_canal IN (
 #### Cenário: Encontrar usuários que são streamers, mas não são espectadores.
 
 ```sql
--- CHECKLIST: UNION ou INTERSECT ou MINUS
+[cite_start]-- CHECKLIST: UNION ou INTERSECT ou MINUS [cite: 6]
 SELECT cpf_streamer FROM Streamer
 MINUS
 SELECT cpf_espectador FROM Espectador;
@@ -212,7 +184,7 @@ SELECT cpf_espectador FROM Espectador;
 #### Cenário: Criar uma visão para simplificar o acesso a informações detalhadas sobre streamers, combinando dados de 3 tabelas.
 
 ```sql
--- CHECKLIST: CREATE VIEW
+[cite_start]-- CHECKLIST: CREATE VIEW [cite: 6]
 CREATE OR REPLACE VIEW V_INFO_STREAMERS AS
 SELECT
     U.cpf,
@@ -234,7 +206,7 @@ JOIN
 #### Cenário: Conceder permissão de SELECT na view `V_INFO_STREAMERS` para um usuário "analista" e depois revogar.
 
 ```sql
--- CHECKLIST: GRANT / REVOKE
+[cite_start]-- CHECKLIST: GRANT / REVOKE [cite: 6]
 -- (Estes comandos são conceituais e devem ser executados por um DBA)
 -- GRANT SELECT ON V_INFO_STREAMERS TO analista;
 -- REVOKE SELECT ON V_INFO_STREAMERS FROM analista;
@@ -251,7 +223,7 @@ Aqui estão os blocos PL/SQL, procedures, functions, packages e triggers que cob
 #### Cenário: Criar uma procedure que atualiza a descrição de um usuário, tratando exceções caso o usuário não exista.
 
 ```sql
--- CHECKLIST: CREATE PROCEDURE, USO DE PARÂMETROS (IN), %TYPE, SELECT ... INTO, IF ELSIF, EXCEPTION WHEN
+[cite_start]-- CHECKLIST: CREATE PROCEDURE [cite: 12][cite_start], USO DE PARÂMETROS (IN) [cite: 12][cite_start], %TYPE [cite: 12][cite_start], SELECT ... INTO [cite: 12][cite_start], IF ELSIF [cite: 12][cite_start], EXCEPTION WHEN [cite: 12]
 CREATE OR REPLACE PROCEDURE prc_atualizar_descricao_usuario (
     p_cpf       IN Usuario.cpf%TYPE,
     p_nova_desc IN Usuario.descricao%TYPE
@@ -277,7 +249,7 @@ END;
 #### Cenário: Criar uma função que retorna a contagem de inscritos de um canal e usar um bloco anônimo com uma estrutura de dados do tipo TABLE para listar todas as categorias.
 
 ```sql
--- CHECKLIST: CREATE FUNCTION
+[cite_start]-- CHECKLIST: CREATE FUNCTION [cite: 12]
 CREATE OR REPLACE FUNCTION fnc_contar_assinantes (
     p_id_canal IN Canal.id_canal%TYPE
 ) RETURN NUMBER IS
@@ -288,7 +260,7 @@ BEGIN
 END;
 /
 
--- CHECKLIST: BLOCO ANÔNIMO, USO DE ESTRUTURA DE DADOS DO TIPO TABLE, FOR IN LOOP
+[cite_start]-- CHECKLIST: BLOCO ANÔNIMO [cite: 12][cite_start], USO DE ESTRUTURA DE DADOS DO TIPO TABLE [cite: 12][cite_start], FOR IN LOOP [cite: 12]
 DECLARE
     TYPE t_lista_categorias IS TABLE OF Categoria.nome_categoria%TYPE INDEX BY PLS_INTEGER;
     v_categorias t_lista_categorias;
@@ -307,11 +279,11 @@ END;
 #### Cenário: Criar um bloco anônimo que usa um cursor para buscar todos os vídeos de um determinado canal, armazenando cada linha em uma variável do tipo %ROWTYPE, e imprimindo o título de cada um.
 
 ```sql
--- CHECKLIST: CURSOR (OPEN, FETCH e CLOSE), USO DE RECORD, %ROWTYPE, LOOP EXIT WHEN
+[cite_start]-- CHECKLIST: CURSOR (OPEN, FETCH e CLOSE) [cite: 12][cite_start], USO DE RECORD [cite: 12][cite_start], %ROWTYPE [cite: 12][cite_start], LOOP EXIT WHEN [cite: 12]
 DECLARE
-    -- 7. Uso de %ROWTYPE para representar uma linha da tabela Video
+    [cite_start]-- 7. Uso de %ROWTYPE para representar uma linha da tabela Video [cite: 12]
     v_video_rowtype Video%ROWTYPE;
-    -- 14. Declarando o cursor
+    [cite_start]-- 14. Declarando o cursor [cite: 12]
     CURSOR c_videos_canal (p_canal_id Canal.id_canal%TYPE) IS
         SELECT * FROM Video WHERE canal_id = p_canal_id;
 BEGIN
@@ -331,9 +303,9 @@ END;
 #### Cenário: Criar um package que encapsula a lógica de gerenciamento de canais.
 
 ```sql
--- CHECKLIST: CREATE OR REPLACE PACKAGE, CREATE OR REPLACE PACKAGE BODY, USO DE PARÂMETROS (OUT ou IN OUT)
+[cite_start]-- CHECKLIST: CREATE OR REPLACE PACKAGE [cite: 12][cite_start], CREATE OR REPLACE PACKAGE BODY [cite: 12][cite_start], USO DE PARÂMETROS (OUT ou IN OUT) [cite: 12]
 
--- 1. Especificação do Package
+[cite_start]-- 1. Especificação do Package [cite: 12]
 CREATE OR REPLACE PACKAGE pkg_gerenciamento_canal AS
     FUNCTION fnc_contar_assinantes (p_id_canal IN Canal.id_canal%TYPE) RETURN NUMBER;
     PROCEDURE prc_obter_info_canal (
@@ -343,7 +315,7 @@ CREATE OR REPLACE PACKAGE pkg_gerenciamento_canal AS
     );
 END pkg_gerenciamento_canal;
 /
--- 2. Corpo do Package
+[cite_start]-- 2. Corpo do Package [cite: 12]
 CREATE OR REPLACE PACKAGE BODY pkg_gerenciamento_canal AS
     FUNCTION fnc_contar_assinantes (p_id_canal IN Canal.id_canal%TYPE) RETURN NUMBER IS
         v_total_assinantes NUMBER;
@@ -384,16 +356,16 @@ CREATE TABLE log_mudancas_canal (
     usuario_db    VARCHAR2(100)
 );
 
--- CHECKLIST: CREATE OR REPLACE TRIGGER (LINHA), WHILE LOOP (exemplo didático), CASE WHEN
+[cite_start]-- CHECKLIST: CREATE OR REPLACE TRIGGER (LINHA) [cite: 12][cite_start], WHILE LOOP [cite: 12] [cite_start](exemplo didático), CASE WHEN [cite: 12]
 CREATE OR REPLACE TRIGGER trg_audita_nome_canal
 BEFORE UPDATE OF nome_canal ON Canal
 FOR EACH ROW
 DECLARE
     v_iterador NUMBER := 0; -- Apenas para exemplo de loop
 BEGIN
-    -- Exemplo didático de WHILE LOOP
+    [cite_start]-- Exemplo didático de WHILE LOOP [cite: 12]
     WHILE v_iterador < 1 LOOP
-        -- Uso de CASE WHEN
+        [cite_start]-- Uso de CASE WHEN [cite: 12]
         CASE
             WHEN :OLD.nome_canal != :NEW.nome_canal THEN
                 INSERT INTO log_mudancas_canal (id_canal, nome_antigo, nome_novo, data_mudanca, usuario_db)
@@ -406,7 +378,7 @@ BEGIN
 END;
 /
 
--- CHECKLIST: CREATE OR REPLACE TRIGGER (COMANDO)
+[cite_start]-- CHECKLIST: CREATE OR REPLACE TRIGGER (COMANDO) [cite: 12]
 CREATE OR REPLACE TRIGGER trg_impede_canal_fim_semana
 BEFORE INSERT ON Canal
 BEGIN
