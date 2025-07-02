@@ -164,10 +164,8 @@ JOIN
     Canal C ON S.id_canal = C.id_canal;
 
 -- 26. GRANT / REVOKE
--- Cenário: Conceder permissão de SELECT na view V_INFO_STREAMERS para um usuário "analista" e depois revogar.
--- (Estes comandos são conceituais e devem ser executados por um DBA)
--- GRANT SELECT ON V_INFO_STREAMERS TO analista;
--- REVOKE SELECT ON V_INFO_STREAMERS FROM analista;
+GRANT SELECT ON V_INFO_STREAMERS TO analista;
+REVOKE SELECT ON V_INFO_STREAMERS FROM analista;
 
 
 -- =====================================================================
@@ -300,7 +298,7 @@ CREATE OR REPLACE TRIGGER trg_audita_nome_canal
 BEFORE UPDATE OF nome_canal ON Canal
 FOR EACH ROW
 DECLARE
-    v_iterador NUMBER := 0; -- Apenas para exemplo de loop
+    v_iterador NUMBER := 0;
 BEGIN
     -- 11. Exemplo didático de WHILE LOOP
     WHILE v_iterador < 1 LOOP
