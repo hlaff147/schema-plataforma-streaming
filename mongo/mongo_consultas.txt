@@ -1,0 +1,364 @@
+// ======================================================================
+// 0) PREPARO (import e database)
+// ======================================================================
+
+// (Opcional) Import da sua base local (ajuste o caminho se necessário)
+// mongoimport --db f1 --collection tmp --file /mnt/data/campeonato_f1_parcial.json --jsonArray
+// Dica: se o arquivo estiver como um objeto com várias chaves (e não um array),
+// faça: mongo --quiet f1 --eval 'db.dropDatabase()'
+// e então no mongosh rode este loader para "espalhar" nas coleções:
+
+/*
+use f1
+const root = db.tmp.findOne()            // documento raiz com as chaves
+db.pilotos.insertMany(root.pilotos)
+db.equipes.insertMany(root.equipes)
+db.grandes_premios.insertMany(root.grandes_premios)
+db.funcionarios.insertMany(root.funcionarios)
+db.tmp.drop()
+*/
+
+
+// 1. USE - Seleciona o database f1
+use f1
+
+// 2. FIND + 19. PRETTY - Busca todos os pilotos com projeção e formatação
+db.pilotos.find({}, { _id: 0, nome: 1, nacionalidade: 1 }).pretty()
+
+// 3. SIZE + 7. GTE - Filtra pilotos que dirigiram para 2 ou mais equipes
+db.pilotos.find(
+  { $expr: { $gte: [ { $size: "$equipes_dirigidas" }, 2 ] } },
+  { _id:0, nome:1, equipes_dirigidas:1 }
+)
+
+// 4. AGGREGATE + 5. MATCH + 6. PROJECT + 8. GROUP + 9. SUM + 11. MAX + 12. AVG + 14. SORT + 15. LIMIT
+// Analisa orçamentos por país sede (soma, máximo, média) dos top 5 países
+db.equipes.aggregate([
+  { $match: { pais_sede: { $exists: true } } },
+  { $project: { _id:0, nome:1, pais_sede:1, orcamento_milhoes:1 } },
+  {
+    $group: {
+      _id: "$pais_sede",
+      somaOrcamento: { $sum: "$orcamento_milhoes" },
+      maxOrcamento: { $max: "$orcamento_milhoes" },
+      avgOrcamento: { $avg: "$orcamento_milhoes" }
+    }
+  },
+  { $sort: { somaOrcamento: -1 } },
+  { $limit: 5 }
+])
+
+// 10. COUNT - Conta quantos funcionários são mecânicos
+db.funcionarios.countDocuments({ cargo: "Mecânico" })
+
+// 13. EXISTS - Encontra equipes que possuem array de funcionários
+db.equipes.find({ funcionarios: { $exists: true } }, { _id:0, nome:1 })
+
+// 16. $WHERE - Usa JavaScript para encontrar funcionários com salário > 3 milhões
+db.funcionarios.find(
+  { $where: function() { return this.salario_milhoes > 3 } },
+  { _id:0, nome:1, salario_milhoes:1 }
+)
+
+// 17. MAPREDUCE - Soma salários por cargo usando map-reduce
+db.funcionarios.mapReduce(
+  function() { emit(this.cargo, this.salario_milhoes) },
+  function(cargo, valores) { return Array.sum(valores) },
+  { out: { inline: 1 } }
+)
+
+// 18. FUNCTION - Calcula idade aproximada dos pilotos usando função JavaScript
+db.pilotos.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome:1,
+      data_nasc:1,
+      idade_aprox: {
+        $function: {
+          body: function(dn) {
+            const birth = new Date(dn);
+            const diff = Date.now() - birth.getTime();
+            return Math.floor(diff / (365.25*24*3600*1000));
+          },
+          args: ["$data_nasc"],
+          lang: "js"
+        }
+      }
+    }
+  },
+  { $sort: { idade_aprox: -1 } }
+])
+
+// 20. ALL - Encontra pilotos que dirigiram tanto para McLaren quanto Ferrari
+db.pilotos.find(
+  { equipes_dirigidas: { $all: ["McLaren F1 Team", "Scuderia Ferrari"] } },
+  { _id:0, nome:1, equipes_dirigidas:1 }
+)
+
+// 21. SET + 25. UPDATE - Atualiza nacionalidade de um piloto específico
+db.pilotos.updateOne(
+  { nome: "Ian Andrade" },
+  { $set: { nacionalidade: "Brasil (ajuste demo)" } }
+)
+
+// 25. UPDATE (updateMany) - Aumenta salário de todos os mecânicos em 0.1 milhão
+db.funcionarios.updateMany(
+  { cargo: "Mecânico" },
+  [ { $set: { salario_milhoes: { $add: ["$salario_milhoes", 0.1] } } } ]
+)
+
+// 31. ADDTOSET - Adiciona equipe ao piloto sem duplicar
+db.pilotos.updateOne(
+  { nome: "Natália Casa Grande" },
+  { $addToSet: { equipes_dirigidas: "Oracle Red Bull Racing" } }
+)
+
+// 22. TEXT - Cria índice de texto para busca
+db.pilotos.createIndex({ nome: "text", nacionalidade: "text", "equipes_dirigidas": "text" })
+
+// 23. SEARCH - Busca textual por "Ferrari" e "Croácia"
+db.pilotos.find(
+  { $text: { $search: "Ferrari Croácia" } },
+  { _id:0, nome:1, nacionalidade:1, equipes_dirigidas:1, score: { $meta: "textScore" } }
+).sort({ score: { $meta: "textScore" } })
+
+// 24. FILTER - Filtra apenas mecânicos do array de funcionários de cada equipe
+db.equipes.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome:1,
+      mecanicos: {
+        $filter: {
+          input: "$funcionarios",
+          as: "f",
+          cond: { $eq: ["$f.cargo", "Mecânico"] }
+        }
+      }
+    }
+  }
+])
+
+// 26. SAVE (upsert) - Insere novo funcionário se não existir, atualiza se existir
+db.funcionarios.updateOne(
+  { nome: "Novo Colaborador" },
+  { $set: { cargo: "Analista", nacionalidade: "Brasil", salario_milhoes: 0.5 } },
+  { upsert: true }
+)
+
+// 26. SAVE (insertOne) - Insere novo documento diretamente
+db.funcionarios.insertOne({ nome: "Colab Inserido", cargo: "Estrategista", nacionalidade: "Brasil", salario_milhoes: 0.8 })
+
+// 27. RENAMECOLLECTION - Renomeia coleção grandes_premios para gps
+db.grandes_premios.renameCollection("gps")
+
+// 28. COND - Classifica corridas como "agitado" ou "moderado" baseado nas ultrapassagens
+db.gps.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome:1,
+      ano:1,
+      acao: {
+        $cond: [
+          { $gte: ["$estatisticas.ultrapassagens", 60] },
+          "agitado",
+          "moderado"
+        ]
+      }
+    }
+  }
+])
+
+// 29. LOOKUP - Faz join entre pilotos e suas equipes para mostrar orçamentos
+db.pilotos.aggregate([
+  {
+    $lookup: {
+      from: "equipes",
+      let: { equipesPiloto: "$equipes_dirigidas" },
+      pipeline: [
+        { $match: { $expr: { $in: ["$nome", "$equipesPiloto"] } } },
+        { $project: { _id:0, nome:1, orcamento_milhoes:1 } }
+      ],
+      as: "equipes_do_piloto"
+    }
+  },
+  { $project: { _id:0, nome:1, equipes_do_piloto:1 } }
+])
+
+// 30. FINDONE - Busca um único documento de piloto
+db.pilotos.findOne({ nome: "Ian Andrade" }, { _id:0, nome:1, nacionalidade:1 })
+
+// CRUD - Inserção de novo piloto
+db.pilotos.insertOne({
+  nome: "Piloto Demo",
+  nacionalidade: "Brasil",
+  data_nasc: "2000-01-01",
+  patrimonio_milhoes: 1.0,
+  equipes_dirigidas: ["RB"]
+})
+
+// CRUD - Atualização com pipeline para aumento salarial
+db.funcionarios.updateOne(
+  { nome: "Zoe Campos", cargo: "Mecânico" },
+  [ { $set: { salario_milhoes: { $add: ["$salario_milhoes", 0.2] } } } ]
+)
+
+// CRUD - Remoção de documento
+db.funcionarios.deleteOne({ nome: "Colab Inserido" })
+
+// EXTRAS - Filtra GPs de 2025 ou depois, ordena por ultrapassagens
+db.gps.find(
+  { ano: { $gte: 2025 } },
+  { _id:0, nome:1, ano:1, "estatisticas.ultrapassagens":1 }
+).sort({ "estatisticas.ultrapassagens": -1 }).limit(3)
+
+// EXTRAS - Count de funcionários agrupados por cargo
+db.funcionarios.aggregate([
+  { $group: { _id: "$cargo", total: { $sum: 1 } } },
+  { $sort: { total: -1 } }
+])
+
+// EXTRAS - Média de orçamento e total de equipes por país
+db.equipes.aggregate([
+  {
+    $group: {
+      _id: "$pais_sede",
+      media_orcamento: { $avg: "$orcamento_milhoes" },
+      total_equipes: { $sum: 1 }
+    }
+  },
+  { $sort: { media_orcamento: -1 } }
+])
+
+// EXTRAS - Pilotos com patrimônio >= 30 milhões
+db.pilotos.find(
+  { patrimonio_milhoes: { $gte: 30 } },
+  { _id:0, nome:1, patrimonio_milhoes:1 }
+).sort({ patrimonio_milhoes: -1 })
+
+// EXTRAS - Funcionários bem pagos (>= 2 milhões) que possuem o campo salário
+db.funcionarios.find(
+  { salario_milhoes: { $exists: true }, salario_milhoes: { $gte: 2.0 } },
+  { _id:0, nome:1, cargo:1, salario_milhoes:1 }
+)
+
+// EXTRAS - Conta total de funcionários por equipe usando SIZE
+db.equipes.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome:1,
+      total_funcionarios: { $size: { $ifNull: ["$funcionarios", []] } }
+    }
+  },
+  { $sort: { total_funcionarios: -1 } }
+])
+
+// EXTRAS - Conta equipes ricas (orçamento >= 400 milhões)
+db.equipes.aggregate([
+  { $match: { orcamento_milhoes: { $gte: 400 } } },
+  { $count: "equipes_ricas" }
+])
+
+// EXTRAS - Lookup avançado: orçamento total das equipes por piloto
+db.pilotos.aggregate([
+  { $unwind: "$equipes_dirigidas" },
+  {
+    $lookup: {
+      from: "equipes",
+      localField: "equipes_dirigidas",
+      foreignField: "nome",
+      as: "eq"
+    }
+  },
+  { $unwind: "$eq" },
+  {
+    $group: {
+      _id: "$nome",
+      orcamento_total: { $sum: "$eq.orcamento_milhoes" }
+    }
+  },
+  { $sort: { orcamento_total: -1 } }
+])
+
+// EXTRAS - GPs com 6+ pilotos participantes
+db.gps.find(
+  { $expr: { $gte: [ { $size: "$pilotos_participantes" }, 6 ] } },
+  { _id:0, nome:1, "estatisticas.ultrapassagens":1 }
+).sort({ "estatisticas.ultrapassagens": -1 })
+
+// EXTRAS - Filtra funcionários bem pagos (>= 2 milhões) por equipe
+db.equipes.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome: 1,
+      funcionarios_bem_pagos: {
+        $filter: {
+          input: "$funcionarios",
+          as: "f",
+          cond: { $gte: ["$f.salario_milhoes", 2.0] }
+        }
+      }
+    }
+  }
+])
+
+// EXTRAS - Calcula total de funcionários usando FUNCTION personalizada
+db.equipes.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome:1,
+      total_funcionarios: {
+        $function: {
+          body: function(func) {
+            return func ? func.length : 0;
+          },
+          args: ["$funcionarios"],
+          lang: "js"
+        }
+      }
+    }
+  },
+  { $sort: { total_funcionarios: -1 } }
+])
+
+// EXTRAS - Busca pilotos cujo nome contém "Ana" usando WHERE
+db.pilotos.find(
+  { $where: function() { return this.nome.includes("Ana") } },
+  { _id:0, nome:1, nacionalidade:1 }
+)
+
+// EXTRAS - Funcionários de nacionalidades específicas
+db.funcionarios.find(
+  { nacionalidade: { $in: ["Venezuela", "França", "Peru"] } },
+  { _id:0, nome:1, nacionalidade:1, cargo:1 }
+)
+
+// EXTRAS - Classifica funcionários por nível salarial usando COND aninhado
+db.funcionarios.aggregate([
+  {
+    $project: {
+      _id:0,
+      nome:1,
+      cargo:1,
+      nivel_salario: {
+        $cond: [
+          { $gte: ["$salario_milhoes", 3.0] },
+          "alto",
+          { $cond: [
+            { $gte: ["$salario_milhoes", 1.0] },
+            "medio",
+            "baixo"
+          ]}
+        ]
+      }
+    }
+  }
+])
+
+// EXTRAS - Renomeia de volta para demonstrar RENAMECOLLECTION novamente
+db.gps.renameCollection("grandes_premios")

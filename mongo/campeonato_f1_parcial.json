@@ -1,0 +1,959 @@
+{
+    "pilotos": [
+        {
+            "nome": "Ana Sophia Pereira",
+            "nacionalidade": "Moldávia",
+            "data_nasc": "1941-08-19",
+            "patrimonio_milhoes": 15.01,
+            "equipes_dirigidas": [
+                "RB",
+                "BWT Alpine F1 Team",
+                "McLaren F1 Team"
+            ]
+        },
+        {
+            "nome": "Srta. Elisa Martins",
+            "nacionalidade": "Guatemala",
+            "data_nasc": "1945-09-07",
+            "patrimonio_milhoes": 35.38,
+            "equipes_dirigidas": [
+                "McLaren F1 Team"
+            ]
+        },
+        {
+            "nome": "Hellena Rodrigues",
+            "nacionalidade": "Fiji",
+            "data_nasc": "1969-03-04",
+            "patrimonio_milhoes": 38.77,
+            "equipes_dirigidas": [
+                "McLaren F1 Team"
+            ]
+        },
+        {
+            "nome": "Ian Andrade",
+            "nacionalidade": "Santa Lúcia",
+            "data_nasc": "2003-07-06",
+            "patrimonio_milhoes": 43.39,
+            "equipes_dirigidas": [
+                "Aston Martin Aramco F1 Team",
+                "Sauber F1 Team"
+            ]
+        },
+        {
+            "nome": "Benício Cunha",
+            "nacionalidade": "Timor Leste",
+            "data_nasc": "2007-04-10",
+            "patrimonio_milhoes": 31.97,
+            "equipes_dirigidas": [
+                "Scuderia Ferrari",
+                "BWT Alpine F1 Team"
+            ]
+        },
+        {
+            "nome": "Sra. Hadassa Rezende",
+            "nacionalidade": "Israel",
+            "data_nasc": "1991-09-27",
+            "patrimonio_milhoes": 18.09,
+            "equipes_dirigidas": [
+                "Aston Martin Aramco F1 Team",
+                "Oracle Red Bull Racing",
+                "Scuderia Ferrari"
+            ]
+        },
+        {
+            "nome": "Natália Casa Grande",
+            "nacionalidade": "Croácia",
+            "data_nasc": "1987-02-17",
+            "patrimonio_milhoes": 26.94,
+            "equipes_dirigidas": [
+                "Scuderia Ferrari"
+            ]
+        },
+        {
+            "nome": "Dra. Zoe da Luz",
+            "nacionalidade": "Portugal",
+            "data_nasc": "1995-02-21",
+            "patrimonio_milhoes": 23.38,
+            "equipes_dirigidas": [
+                "Haas F1 Team",
+                "McLaren F1 Team"
+            ]
+        },
+        {
+            "nome": "Maria Liz Fonseca",
+            "nacionalidade": "Coreia do Sul",
+            "data_nasc": "2002-07-27",
+            "patrimonio_milhoes": 34.39,
+            "equipes_dirigidas": [
+                "McLaren F1 Team"
+            ]
+        },
+        {
+            "nome": "Thomas Monteiro",
+            "nacionalidade": "Barein",
+            "data_nasc": "1998-03-22",
+            "patrimonio_milhoes": 41.18,
+            "equipes_dirigidas": [
+                "Williams Racing",
+                "Aston Martin Aramco F1 Team"
+            ]
+        }
+    ],
+    "equipes": [
+        {
+            "nome": "Mercedes-AMG Petronas F1 Team",
+            "pais_sede": "Sri Lanka",
+            "orcamento_milhoes": 133,
+            "funcionarios": [
+                {
+                    "nome": "Maria Clara Castro",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Grécia",
+                    "salario_milhoes": 0.71
+                },
+                {
+                    "nome": "Caleb Garcia",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Bélgica",
+                    "salario_milhoes": 3.82
+                },
+                {
+                    "nome": "Dra. Mariah Câmara",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Ilhas Falkland",
+                    "salario_milhoes": 3.05
+                },
+                {
+                    "nome": "Srta. Ana Clara Ribeiro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Costa Rica",
+                    "salario_milhoes": 0.57
+                },
+                {
+                    "nome": "Zoe Campos",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Venezuela",
+                    "salario_milhoes": 1.46
+                },
+                {
+                    "nome": "Maria Cecília Oliveira",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Clipperton Island",
+                    "salario_milhoes": 0.6
+                }
+            ]
+        },
+        {
+            "nome": "Oracle Red Bull Racing",
+            "pais_sede": "Bielorrússia",
+            "orcamento_milhoes": 429,
+            "funcionarios": [
+                {
+                    "nome": "Igor Montenegro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Marianas do Norte",
+                    "salario_milhoes": 0.26
+                },
+                {
+                    "nome": "Otávio Fernandes",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Domínica",
+                    "salario_milhoes": 2.16
+                },
+                {
+                    "nome": "Sr. João Felipe Sampaio",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Turquemenistão",
+                    "salario_milhoes": 0.49
+                },
+                {
+                    "nome": "Lara Abreu",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Quiribáti",
+                    "salario_milhoes": 1.07
+                },
+                {
+                    "nome": "Maria Clara Castro",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Grécia",
+                    "salario_milhoes": 0.71
+                },
+                {
+                    "nome": "Dr. João Aparecida",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Peru",
+                    "salario_milhoes": 3.52
+                },
+                {
+                    "nome": "Henrique Teixeira",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "França",
+                    "salario_milhoes": 2.99
+                },
+                {
+                    "nome": "Dra. Mariah Câmara",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Ilhas Falkland",
+                    "salario_milhoes": 3.05
+                }
+            ]
+        },
+        {
+            "nome": "Scuderia Ferrari",
+            "pais_sede": "Cabo Verde",
+            "orcamento_milhoes": 398,
+            "funcionarios": [
+                {
+                    "nome": "Dr. João Aparecida",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Peru",
+                    "salario_milhoes": 3.52
+                },
+                {
+                    "nome": "Lara Abreu",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Quiribáti",
+                    "salario_milhoes": 1.07
+                },
+                {
+                    "nome": "Igor Montenegro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Marianas do Norte",
+                    "salario_milhoes": 0.26
+                },
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                },
+                {
+                    "nome": "Srta. Ana Clara Ribeiro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Costa Rica",
+                    "salario_milhoes": 0.57
+                },
+                {
+                    "nome": "Joaquim Câmara",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Bulgária",
+                    "salario_milhoes": 1.3
+                },
+                {
+                    "nome": "Zoe Campos",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Venezuela",
+                    "salario_milhoes": 1.46
+                },
+                {
+                    "nome": "Brenda Alves",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Polônia",
+                    "salario_milhoes": 0.22
+                }
+            ]
+        },
+        {
+            "nome": "McLaren F1 Team",
+            "pais_sede": "Micronésia",
+            "orcamento_milhoes": 156,
+            "funcionarios": [
+                {
+                    "nome": "Gael Henrique Silva",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Montenegro",
+                    "salario_milhoes": 1.17
+                },
+                {
+                    "nome": "Anna Liz Novaes",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Eritreia",
+                    "salario_milhoes": 4.79
+                },
+                {
+                    "nome": "Srta. Ísis Borges",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Mali",
+                    "salario_milhoes": 3.71
+                },
+                {
+                    "nome": "Zoe Campos",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Venezuela",
+                    "salario_milhoes": 1.46
+                },
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                },
+                {
+                    "nome": "Henrique Teixeira",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "França",
+                    "salario_milhoes": 2.99
+                }
+            ]
+        },
+        {
+            "nome": "Aston Martin Aramco F1 Team",
+            "pais_sede": "Camarões",
+            "orcamento_milhoes": 339,
+            "funcionarios": [
+                {
+                    "nome": "Otávio Fernandes",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Domínica",
+                    "salario_milhoes": 2.16
+                },
+                {
+                    "nome": "Mateus da Mota",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Ilhas Marshall",
+                    "salario_milhoes": 3.68
+                },
+                {
+                    "nome": "Brenda Alves",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Polônia",
+                    "salario_milhoes": 0.22
+                },
+                {
+                    "nome": "Ana Beatriz Alves",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Barein",
+                    "salario_milhoes": 0.53
+                },
+                {
+                    "nome": "Sr. João Felipe Sampaio",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Turquemenistão",
+                    "salario_milhoes": 0.49
+                },
+                {
+                    "nome": "Zoe Campos",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Venezuela",
+                    "salario_milhoes": 1.46
+                },
+                {
+                    "nome": "Caleb Garcia",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Bélgica",
+                    "salario_milhoes": 3.82
+                },
+                {
+                    "nome": "Gael Henrique Silva",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Montenegro",
+                    "salario_milhoes": 1.17
+                },
+                {
+                    "nome": "Joaquim Câmara",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Bulgária",
+                    "salario_milhoes": 1.3
+                }
+            ]
+        },
+        {
+            "nome": "BWT Alpine F1 Team",
+            "pais_sede": "Salvador",
+            "orcamento_milhoes": 250,
+            "funcionarios": [
+                {
+                    "nome": "Gael Henrique Silva",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Montenegro",
+                    "salario_milhoes": 1.17
+                },
+                {
+                    "nome": "Maria Cecília Oliveira",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Clipperton Island",
+                    "salario_milhoes": 0.6
+                },
+                {
+                    "nome": "Brenda Alves",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Polônia",
+                    "salario_milhoes": 0.22
+                },
+                {
+                    "nome": "Otávio Fernandes",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Domínica",
+                    "salario_milhoes": 2.16
+                },
+                {
+                    "nome": "Sr. João Felipe Sampaio",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Turquemenistão",
+                    "salario_milhoes": 0.49
+                },
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                },
+                {
+                    "nome": "Joaquim Câmara",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Bulgária",
+                    "salario_milhoes": 1.3
+                },
+                {
+                    "nome": "Caleb Garcia",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Bélgica",
+                    "salario_milhoes": 3.82
+                }
+            ]
+        },
+        {
+            "nome": "Williams Racing",
+            "pais_sede": "Niue",
+            "orcamento_milhoes": 252,
+            "funcionarios": [
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                },
+                {
+                    "nome": "Dra. Mariah Câmara",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Ilhas Falkland",
+                    "salario_milhoes": 3.05
+                },
+                {
+                    "nome": "Igor Montenegro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Marianas do Norte",
+                    "salario_milhoes": 0.26
+                },
+                {
+                    "nome": "Dr. João Aparecida",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Peru",
+                    "salario_milhoes": 3.52
+                },
+                {
+                    "nome": "Gael Henrique Silva",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Montenegro",
+                    "salario_milhoes": 1.17
+                },
+                {
+                    "nome": "Otávio Fernandes",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Domínica",
+                    "salario_milhoes": 2.16
+                },
+                {
+                    "nome": "Zoe Campos",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Venezuela",
+                    "salario_milhoes": 1.46
+                },
+                {
+                    "nome": "Maria Cecília Oliveira",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Clipperton Island",
+                    "salario_milhoes": 0.6
+                },
+                {
+                    "nome": "Brenda Alves",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Polônia",
+                    "salario_milhoes": 0.22
+                },
+                {
+                    "nome": "Henrique Teixeira",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "França",
+                    "salario_milhoes": 2.99
+                }
+            ]
+        },
+        {
+            "nome": "Sauber F1 Team",
+            "pais_sede": "Ilha Bouvet",
+            "orcamento_milhoes": 265,
+            "funcionarios": [
+                {
+                    "nome": "Brenda Alves",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Polônia",
+                    "salario_milhoes": 0.22
+                },
+                {
+                    "nome": "Ana Beatriz Alves",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Barein",
+                    "salario_milhoes": 0.53
+                },
+                {
+                    "nome": "Dr. João Aparecida",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Peru",
+                    "salario_milhoes": 3.52
+                },
+                {
+                    "nome": "Henrique Teixeira",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "França",
+                    "salario_milhoes": 2.99
+                },
+                {
+                    "nome": "Lara Abreu",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Quiribáti",
+                    "salario_milhoes": 1.07
+                },
+                {
+                    "nome": "Sr. João Felipe Sampaio",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Turquemenistão",
+                    "salario_milhoes": 0.49
+                },
+                {
+                    "nome": "Maria Clara Castro",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Grécia",
+                    "salario_milhoes": 0.71
+                },
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                }
+            ]
+        },
+        {
+            "nome": "Haas F1 Team",
+            "pais_sede": "Malta",
+            "orcamento_milhoes": 140,
+            "funcionarios": [
+                {
+                    "nome": "Srta. Ana Clara Ribeiro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Costa Rica",
+                    "salario_milhoes": 0.57
+                },
+                {
+                    "nome": "Srta. Ísis Borges",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Mali",
+                    "salario_milhoes": 3.71
+                },
+                {
+                    "nome": "Mateus da Mota",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Ilhas Marshall",
+                    "salario_milhoes": 3.68
+                },
+                {
+                    "nome": "Igor Montenegro",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Marianas do Norte",
+                    "salario_milhoes": 0.26
+                },
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                }
+            ]
+        },
+        {
+            "nome": "RB",
+            "pais_sede": "Ashmore and Cartier Islands",
+            "orcamento_milhoes": 437,
+            "funcionarios": [
+                {
+                    "nome": "Mateus da Mota",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Ilhas Marshall",
+                    "salario_milhoes": 3.68
+                },
+                {
+                    "nome": "Gael Henrique Silva",
+                    "cargo": "Chefe de Equipe",
+                    "nacionalidade": "Montenegro",
+                    "salario_milhoes": 1.17
+                },
+                {
+                    "nome": "Otávio Fernandes",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Domínica",
+                    "salario_milhoes": 2.16
+                },
+                {
+                    "nome": "Bruno da Conceição",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Suazilândia",
+                    "salario_milhoes": 3.06
+                },
+                {
+                    "nome": "Anna Liz Novaes",
+                    "cargo": "Engenheiro Chefe",
+                    "nacionalidade": "Eritreia",
+                    "salario_milhoes": 4.79
+                },
+                {
+                    "nome": "Ana Beatriz Alves",
+                    "cargo": "Diretor Técnico",
+                    "nacionalidade": "Barein",
+                    "salario_milhoes": 0.53
+                },
+                {
+                    "nome": "Sr. João Felipe Sampaio",
+                    "cargo": "Estrategista",
+                    "nacionalidade": "Turquemenistão",
+                    "salario_milhoes": 0.49
+                },
+                {
+                    "nome": "Zoe Campos",
+                    "cargo": "Mecânico",
+                    "nacionalidade": "Venezuela",
+                    "salario_milhoes": 1.46
+                }
+            ]
+        }
+    ],
+    "grandes_premios": [
+        {
+            "nome": "GP de Haiti",
+            "ano": 2024,
+            "circuito": "Circuito de Nogueira",
+            "data": "2024-03-20",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 35,
+                "pit_stops": 59,
+                "bandeiras_amarelas": 6,
+                "bandeiras_vermelhas": 2
+            }
+        },
+        {
+            "nome": "GP de Peru",
+            "ano": 2024,
+            "circuito": "Circuito de Barros",
+            "data": "2024-03-20",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 39,
+                "pit_stops": 95,
+                "bandeiras_amarelas": 4,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de França",
+            "ano": 2024,
+            "circuito": "Circuito de Rodrigues",
+            "data": "2024-03-27",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 75,
+                "pit_stops": 50,
+                "bandeiras_amarelas": 6,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de Samoa Americana",
+            "ano": 2024,
+            "circuito": "Circuito de da Costa do Norte",
+            "data": "2024-03-27",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 62,
+                "pit_stops": 44,
+                "bandeiras_amarelas": 6,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de Sri Lanka",
+            "ano": 2024,
+            "circuito": "Circuito de Novaes de Cavalcante",
+            "data": "2024-04-06",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 22,
+                "pit_stops": 27,
+                "bandeiras_amarelas": 6,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de Afeganistão",
+            "ano": 2025,
+            "circuito": "Circuito de Fonseca",
+            "data": "2025-03-05",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Benício Cunha",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 41,
+                "pit_stops": 29,
+                "bandeiras_amarelas": 4,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de Wallis e Futuna",
+            "ano": 2025,
+            "circuito": "Circuito de Rodrigues",
+            "data": "2025-03-21",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Benício Cunha",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 40,
+                "pit_stops": 41,
+                "bandeiras_amarelas": 3,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de Guiana",
+            "ano": 2025,
+            "circuito": "Circuito de Garcia dos Dourados",
+            "data": "2025-03-26",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Benício Cunha",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 59,
+                "pit_stops": 53,
+                "bandeiras_amarelas": 0,
+                "bandeiras_vermelhas": 0
+            }
+        },
+        {
+            "nome": "GP de Croácia",
+            "ano": 2025,
+            "circuito": "Circuito de Porto do Galho",
+            "data": "2025-03-27",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Benício Cunha",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 64,
+                "pit_stops": 91,
+                "bandeiras_amarelas": 6,
+                "bandeiras_vermelhas": 1
+            }
+        },
+        {
+            "nome": "GP de Trindade e Tobago",
+            "ano": 2025,
+            "circuito": "Circuito de Novaes do Sul",
+            "data": "2025-03-30",
+            "pilotos_participantes": [
+                "Ian Andrade",
+                "Benício Cunha",
+                "Sra. Hadassa Rezende",
+                "Natália Casa Grande",
+                "Dra. Zoe da Luz",
+                "Maria Liz Fonseca",
+                "Thomas Monteiro"
+            ],
+            "estatisticas": {
+                "ultrapassagens": 84,
+                "pit_stops": 81,
+                "bandeiras_amarelas": 3,
+                "bandeiras_vermelhas": 1
+            }
+        }
+    ],
+    "funcionarios": [
+        {
+            "nome": "Brenda Alves",
+            "cargo": "Chefe de Equipe",
+            "nacionalidade": "Polônia",
+            "salario_milhoes": 0.22
+        },
+        {
+            "nome": "Joaquim Câmara",
+            "cargo": "Mecânico",
+            "nacionalidade": "Bulgária",
+            "salario_milhoes": 1.3
+        },
+        {
+            "nome": "Srta. Ísis Borges",
+            "cargo": "Engenheiro Chefe",
+            "nacionalidade": "Mali",
+            "salario_milhoes": 3.71
+        },
+        {
+            "nome": "Ana Beatriz Alves",
+            "cargo": "Diretor Técnico",
+            "nacionalidade": "Barein",
+            "salario_milhoes": 0.53
+        },
+        {
+            "nome": "Igor Montenegro",
+            "cargo": "Estrategista",
+            "nacionalidade": "Marianas do Norte",
+            "salario_milhoes": 0.26
+        },
+        {
+            "nome": "Gael Henrique Silva",
+            "cargo": "Chefe de Equipe",
+            "nacionalidade": "Montenegro",
+            "salario_milhoes": 1.17
+        },
+        {
+            "nome": "Dra. Mariah Câmara",
+            "cargo": "Diretor Técnico",
+            "nacionalidade": "Ilhas Falkland",
+            "salario_milhoes": 3.05
+        },
+        {
+            "nome": "Lara Abreu",
+            "cargo": "Diretor Técnico",
+            "nacionalidade": "Quiribáti",
+            "salario_milhoes": 1.07
+        },
+        {
+            "nome": "Otávio Fernandes",
+            "cargo": "Diretor Técnico",
+            "nacionalidade": "Domínica",
+            "salario_milhoes": 2.16
+        },
+        {
+            "nome": "Henrique Teixeira",
+            "cargo": "Estrategista",
+            "nacionalidade": "França",
+            "salario_milhoes": 2.99
+        },
+        {
+            "nome": "Caleb Garcia",
+            "cargo": "Chefe de Equipe",
+            "nacionalidade": "Bélgica",
+            "salario_milhoes": 3.82
+        },
+        {
+            "nome": "Dr. João Aparecida",
+            "cargo": "Engenheiro Chefe",
+            "nacionalidade": "Peru",
+            "salario_milhoes": 3.52
+        },
+        {
+            "nome": "Zoe Campos",
+            "cargo": "Mecânico",
+            "nacionalidade": "Venezuela",
+            "salario_milhoes": 1.46
+        },
+        {
+            "nome": "Anna Liz Novaes",
+            "cargo": "Engenheiro Chefe",
+            "nacionalidade": "Eritreia",
+            "salario_milhoes": 4.79
+        },
+        {
+            "nome": "Maria Cecília Oliveira",
+            "cargo": "Mecânico",
+            "nacionalidade": "Clipperton Island",
+            "salario_milhoes": 0.6
+        },
+        {
+            "nome": "Srta. Ana Clara Ribeiro",
+            "cargo": "Estrategista",
+            "nacionalidade": "Costa Rica",
+            "salario_milhoes": 0.57
+        },
+        {
+            "nome": "Bruno da Conceição",
+            "cargo": "Mecânico",
+            "nacionalidade": "Suazilândia",
+            "salario_milhoes": 3.06
+        },
+        {
+            "nome": "Mateus da Mota",
+            "cargo": "Chefe de Equipe",
+            "nacionalidade": "Ilhas Marshall",
+            "salario_milhoes": 3.68
+        },
+        {
+            "nome": "Maria Clara Castro",
+            "cargo": "Diretor Técnico",
+            "nacionalidade": "Grécia",
+            "salario_milhoes": 0.71
+        },
+        {
+            "nome": "Sr. João Felipe Sampaio",
+            "cargo": "Estrategista",
+            "nacionalidade": "Turquemenistão",
+            "salario_milhoes": 0.49
+        }
+    ]
+}
