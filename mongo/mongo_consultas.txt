@@ -2,12 +2,7 @@
 // 0) PREPARO (import e database)
 // ======================================================================
 
-// (Opcional) Import da sua base local (ajuste o caminho se necessário)
-// mongoimport --db f1 --collection tmp --file /mnt/data/campeonato_f1_parcial.json --jsonArray
-// Dica: se o arquivo estiver como um objeto com várias chaves (e não um array),
-// faça: mongo --quiet f1 --eval 'db.dropDatabase()'
-// e então no mongosh rode este loader para "espalhar" nas coleções:
-
+// Criar collection tmp e adicionar o json campeonato_f1_parcial como Documento.
 /*
 use f1
 const root = db.tmp.findOne()            // documento raiz com as chaves
